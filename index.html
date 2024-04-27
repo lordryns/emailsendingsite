@@ -1,0 +1,42 @@
+{%extends "base.html"%}
+
+
+{%block content%}
+
+{%with messages = get_flashed_messages()%}
+{%if messages%}
+{%for msg in messages%}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{msg}}</strong> Note that this might show up a spam email.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{%endfor%}
+{%endif%}
+{%endwith%}
+<br>
+<form class="shadow-sm p-3 mb-5 bg-body-tertiary rounded" method="post">
+  <div class="mb-3">
+    <label for="title" class="form-label">Email title</label>
+    <input type="text" class="form-control" id="title" aria-describedby="Email title" name="title" required>
+    <div id="title" class="form-text">You'll need to add a title to continue.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea class="form-control" id="message" rows="3" name="message"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Recipient email</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+
+
+  <div class="mb-3 form-check">
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Send mail</button>
+</form>
+{%endblock%}
